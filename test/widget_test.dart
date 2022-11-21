@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:konter_gps/main.dart';
 import 'package:konter_gps/konter_gps.dart';
 
 void main() {
