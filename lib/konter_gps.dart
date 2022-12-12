@@ -10,7 +10,7 @@ class KonterGps extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          textTheme: GoogleFonts.openSansTextTheme(),
+          textTheme: GoogleFonts.poppinsTextTheme(),
           scaffoldBackgroundColor: Colors.white),
       home: const IntroPage(),
     );

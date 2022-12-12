@@ -3,6 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:konter_gps/common/images.dart';
 import 'package:konter_gps/page/homepage.dart';
+import 'package:konter_gps/page/menu_page.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({Key? key}) : super(key: key);
@@ -21,10 +22,10 @@ class _IntroPageState extends State<IntroPage> {
       ContentConfig(
         title: "Selamat Datang",
         styleTitle: TextStyle(
-            color: HexColor("#CBA8FA"),
+            color: HexColor("#D61C4E"),
             fontSize: 24,
             fontWeight: FontWeight.bold),
-        styleDescription: TextStyle(color: HexColor("#CBA8FA")),
+        styleDescription: TextStyle(color: HexColor("#D61C4E")),
         pathImage: kImgIntro1,
         description:
             "Jangan bersedih, jika kamu mencari handphone yang sesuai budget, sesuai kriteria yang kamu inginkan belum ketemu",
@@ -33,14 +34,14 @@ class _IntroPageState extends State<IntroPage> {
     listContentConfig.add(
       ContentConfig(
           pathImage: kImgIntro2,
-          styleDescription: TextStyle(color: HexColor("#CBA8FA")),
+          styleDescription: TextStyle(color: HexColor("#D61C4E")),
           description:
               "Ingat selalu ada Konter GPS, Kami menawarkan beberapa solusi masalah kamu"),
     );
     listContentConfig.add(
       ContentConfig(
           pathImage: kImgIntro3,
-          styleDescription: TextStyle(color: HexColor("#CBA8FA")),
+          styleDescription: TextStyle(color: HexColor("#D61C4E")),
           description:
               "Kami menyediakan berbagai macam smartphone yang dijamin membuat kamu mudah dalam mencari smartphone impianb "),
     );
@@ -48,7 +49,7 @@ class _IntroPageState extends State<IntroPage> {
 
   void _onDonePress() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const Homepage()));
+        context, MaterialPageRoute(builder: (context) => const MenuPage()));
   }
 
   @override
@@ -65,16 +66,20 @@ class _IntroPageState extends State<IntroPage> {
       onDonePress: _onDonePress,
       isShowSkipBtn: false,
       prevButtonStyle: ButtonStyle(
-          foregroundColor:
-              MaterialStateProperty.all<Color>(HexColor("#CBA8FA"))),
+          backgroundColor: MaterialStateProperty.all(HexColor("#1CD6CE")),
+          foregroundColor: MaterialStateProperty.all<Color>(
+            Colors.white,
+          )),
       nextButtonStyle: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(HexColor("#FEDB39")),
           foregroundColor: MaterialStateProperty.all<Color>(
-        HexColor("#D6459E"),
-      )),
+            Colors.white,
+          )),
       doneButtonStyle: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(HexColor("#FEDB39")),
           foregroundColor: MaterialStateProperty.all<Color>(
-        HexColor("#D6459E"),
-      )),
+            Colors.white,
+          )),
       indicatorConfig: IndicatorConfig(
         sizeIndicator: 5,
         indicatorWidget: Container(
@@ -82,14 +87,14 @@ class _IntroPageState extends State<IntroPage> {
           height: 5,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: HexColor("#CBA8FA")),
+              color: HexColor("#1CD6CE")),
         ),
         activeIndicatorWidget: Container(
           width: 5,
           height: 5,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: HexColor("#D6459E")),
+              color: HexColor("#293462")),
         ),
       ),
     );
