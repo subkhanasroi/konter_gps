@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:intro_slider/intro_slider.dart';
 import 'package:konter_gps/common/images.dart';
-import 'package:konter_gps/page/homepage.dart';
 import 'package:konter_gps/page/menu_page.dart';
 
 class IntroPage extends StatefulWidget {
@@ -43,13 +42,18 @@ class _IntroPageState extends State<IntroPage> {
           pathImage: kImgIntro3,
           styleDescription: TextStyle(color: HexColor("#D61C4E")),
           description:
-              "Kami menyediakan berbagai macam smartphone yang dijamin membuat kamu mudah dalam mencari smartphone impianb "),
+              "Kami menyediakan berbagai macam smartphone yang dijamin membuat kamu mudah dalam mencari smartphone impian "),
     );
   }
 
   void _onDonePress() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const MenuPage()));
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const MenuPage()
+        ),
+        ModalRoute.withName("/Home")
+    );
   }
 
   @override

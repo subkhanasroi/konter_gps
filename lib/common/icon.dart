@@ -11,3 +11,4 @@ const kIcIphone ="${_path}ic_iphone.png";
 const kIcOther="${_path}ic_other.png";
 //icon logo
 const kIcLogo="${_path}ic_konter.png";
+const kIcLogoGps="${_path}ic_gps_logo.png";

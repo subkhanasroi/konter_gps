@@ -1,10 +1,9 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:konter_gps/common/icon.dart';
 import 'package:konter_gps/page/about_page.dart';
 import 'package:konter_gps/page/homepage.dart';
+import 'package:konter_gps/widget/exit_dialog.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -27,26 +26,40 @@ class _MenuPageState extends State<MenuPage> {
     ];
   }
 
+  Future<bool> _onWillPop() async {
+    bool exit = await openExitDialog(context) ?? false;
+    if (exit) {
+      setState(() {
+        exit = true;
+      });
+    }
+    return exit;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: _page.elementAt(_selectedIndex),
-        bottomNavigationBar: BottomNavigationBar(
-          type: BottomNavigationBarType.shifting,
-          selectedItemColor: HexColor("#FEDB39"),
-          unselectedItemColor: Colors.grey,
-          currentIndex: _selectedIndex,
-          onTap: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.info_outline), label: "About Us"),
-          ],
-        ));
+    return WillPopScope(
+      onWillPop: () => _onWillPop(),
+      child: Scaffold(
+          body: _page.elementAt(_selectedIndex),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.shifting,
+            selectedItemColor: HexColor("#FEDB39"),
+            unselectedItemColor: Colors.grey,
+            currentIndex: _selectedIndex,
+            onTap: (index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+            },
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home_outlined), label: "Home"),
+              BottomNavigationBarItem(
+                  icon: ImageIcon(AssetImage(kIcLogoGps), size: 30),
+                  label: "About Us"),
+            ],
+          )),
+    );
   }
 }
