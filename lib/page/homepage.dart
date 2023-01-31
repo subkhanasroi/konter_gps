@@ -268,65 +268,90 @@ class _HomepageState extends State<Homepage> {
                                   crossAxisCount: 2,
                                   crossAxisSpacing: 8),
                           itemBuilder: (BuildContext context, index) {
-                            return InkWell(
-                              onTap: () => _onDetail(_smartphoneModel[index]),
-                              child: Stack(
-                                children: [
-                                  Positioned(
-                                    top: kToolbarHeight,
-                                    bottom: 0,
-                                    left: 0,
-                                    right: 0,
-                                    child: Container(
-                                      height: 100,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey[100],
-                                        borderRadius: BorderRadius.circular(8),
-                                      ),
-                                    ),
-                                  ),
-                                  Positioned(
+                            return IgnorePointer(
+                              ignoring:
+                                  _smartphoneModel[index].status == "Habis" ||
+                                      _smartphoneModel[index].status == "habis",
+                              child: InkWell(
+                                onTap: () => _onDetail(_smartphoneModel[index]),
+                                child: Stack(
+                                  children: [
+                                    Positioned(
+                                      top: kToolbarHeight,
                                       bottom: 0,
                                       left: 0,
                                       right: 0,
-                                      child: Column(
-                                        children: [
-                                          SizedBox(
-                                              height: 135,
-                                              child: Image.network(
-                                                _smartphoneModel[index].gambar,
-                                                fit: BoxFit.fill,
-                                              )),
-                                          Container(
-                                            margin: const EdgeInsets.all(8),
-                                            padding: const EdgeInsets.all(8),
-                                            height: 60,
-                                            width: double.infinity,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                                color: Colors.white),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  _smartphoneModel[index].nama,
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                                Text(
-                                                  _smartphoneModel[index].type,
-                                                  style: const TextStyle(
-                                                      color: Colors.grey),
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ))
-                                ],
+                                      child: Container(
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey[100],
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                    ),
+                                    Positioned(
+                                        bottom: 0,
+                                        left: 0,
+                                        right: 0,
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                                height: 135,
+                                                child: Image.network(
+                                                  _smartphoneModel[index]
+                                                      .gambar,
+                                                  fit: BoxFit.fill,
+                                                  color: _smartphoneModel[index]
+                                                                  .status ==
+                                                              "Habis" ||
+                                                          _smartphoneModel[
+                                                                      index]
+                                                                  .status ==
+                                                              "habis"
+                                                      ? Colors.grey
+                                                      : Colors.transparent,
+                                                  colorBlendMode:
+                                                      BlendMode.saturation,
+                                                )),
+                                            Container(
+                                              margin: const EdgeInsets.all(8),
+                                              padding: const EdgeInsets.all(8),
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                  color: Colors.white),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    _smartphoneModel[index]
+                                                        .nama,
+                                                    style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  Text(
+                                                    _smartphoneModel[index]
+                                                        .type,
+                                                    style: const TextStyle(
+                                                        color: Colors.grey),
+                                                  ),
+                                                  Text(
+                                                    _smartphoneModel[index]
+                                                        .status,
+                                                    style: const TextStyle(
+                                                        color: Colors.grey),
+                                                  )
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ))
+                                  ],
+                                ),
                               ),
                             );
                           });
@@ -418,15 +443,34 @@ class _HomepageState extends State<Homepage> {
                     print(jsonEncode(sss));
                     return Column(
                       children: [
-                        ListTile(
-                          leading: SizedBox(
-                              height: 100,
-                              width: 75,
-                              child: Image.network(
-                                _smartphoneModel[index].gambar,
-                                fit: BoxFit.fill,
-                              )),
-                          title: RichText(text: TextSpan(children: children)),
+                        IgnorePointer(
+                          ignoring: _smartphoneModel[index].status == "Habis" ||
+                              _smartphoneModel[index].status == "habis",
+                          child: InkWell(
+                            onTap: () => _onDetail(_smartphoneModel[index]),
+                            child: ListTile(
+                              leading: SizedBox(
+                                  height: 100,
+                                  width: 75,
+                                  child: Image.network(
+                                    _smartphoneModel[index].gambar,
+                                    fit: BoxFit.fill,
+                                    color: _smartphoneModel[index]
+                                        .status ==
+                                        "Habis" ||
+                                        _smartphoneModel[
+                                        index]
+                                            .status ==
+                                            "habis"
+                                        ? Colors.grey
+                                        : Colors.transparent,
+                                    colorBlendMode:
+                                    BlendMode.saturation,
+                                  )),
+                              title:
+                                  RichText(text: TextSpan(children: children)),
+                            ),
+                          ),
                         ),
                         const SizedBox(
                           height: 8,

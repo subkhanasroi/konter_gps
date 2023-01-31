@@ -5,6 +5,7 @@ class SmartphoneModel {
     required this.warna,
     required this.deskripsi,
     required this.harga,
+    required this.status,
     required this.gambar,
     required this.merek,
     required this.type,
@@ -15,6 +16,7 @@ class SmartphoneModel {
   String warna;
   String deskripsi;
   int harga;
+  String status;
   String gambar;
   String merek;
   String type;
@@ -25,6 +27,7 @@ class SmartphoneModel {
     warna: json["warna"],
     deskripsi: json["deskripsi"],
     harga: json["harga"],
+    status: json["status"],
     gambar: json["gambar"],
     merek: json["merek"],
     type: json["type"],
@@ -36,6 +39,7 @@ class SmartphoneModel {
     "warna": warna,
     "deskripsi": deskripsi,
     "harga": harga,
+    "status": status,
     "gambar": gambar,
     "merek": merek,
     "type": type,

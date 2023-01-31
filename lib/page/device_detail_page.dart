@@ -101,6 +101,8 @@ class _DeviceDetailPageState extends State<DeviceDetailPage> {
                       ),
                       Text(_model!.type,
                           style: const TextStyle(fontWeight: FontWeight.bold)),
+                      Text(_model!.warna,
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
                   const Spacer(),
